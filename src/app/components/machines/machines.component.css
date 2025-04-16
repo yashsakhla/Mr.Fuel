@@ -1,0 +1,77 @@
+
+.machine-container {
+    background: linear-gradient(to bottom right, #f0f4f8, #ffffff);
+    min-height: 100vh;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-bottom: 24px;
+  }
+  
+  .card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  
+    h2 {
+      margin: 0;
+      margin-left: 10px;
+      font-size: 22px;
+      font-weight: 600;
+      color: #333;
+    }
+  
+    .header-icon {
+      font-size: 28px;
+      color: #1976d2;
+    }
+  }
+  
+  .form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: flex-end;
+  }
+  
+  mat-form-field {
+    flex: 1 1 250px;
+  }
+  
+  .table-container {
+    max-height: 400px;
+    overflow: auto;
+  }
+  
+  table {
+    width: 100%;
+  }
+  
+  .btn-wrapper {
+    width: 100%;
+    margin-top: 10px;
+    z-index: 0;
+  }
+  
+  .gradient-button {
+    background: linear-gradient(to right, #42a5f5, #7e57c2);
+    color: white;
+    font-weight: 500;
+    border-radius: 6px;
+    padding: 10px 24px;
+  }
+
+    
+  .actions {
+    display: flex;
+    gap: 8px;
+    justify-content: start;
+  }

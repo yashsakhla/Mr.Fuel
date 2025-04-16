@@ -1,0 +1,332 @@
+<mat-card class="calculation-card">
+    <div class="heading">
+      <mat-icon>calculate</mat-icon>
+      <h3>24x7 Fuel Calculation</h3>
+    </div>
+  
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Select Date</mat-label>
+      <input
+      matInput
+      [matDatepicker]="picker"
+      [(ngModel)]="selectedDate"
+      [matDatepickerFilter]="disableTodayAndFuture"
+      (dateChange)="loadData()"
+    />
+
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  
+    <div *ngFor="let machine of machines" class="machine-section">
+      <mat-card class="machine-card">
+        <div class="machine-details">
+          <p><strong>Machine No:</strong> {{ machine.machineNo }}</p>
+          <p><strong>Nozzle No:</strong> {{ machine.nozzleNo }}</p>
+          <p><strong>Fuel Type:</strong> {{ machine.fuelType }}</p>
+        </div>
+  
+        <form [formGroup]="machine.formGroup">
+          <mat-form-field appearance="outline" class="input-field">
+            <mat-label>Start Day Reading</mat-label>
+            <input matInput formControlName="startReading" type="number" />
+          </mat-form-field>
+  
+          <mat-form-field appearance="outline" class="input-field">
+            <mat-label>End Day Reading</mat-label>
+            <input matInput formControlName="endReading" type="number" [disabled]="userRole === 'manager'" />
+          </mat-form-field>
+  
+          <div class="upload-camera">
+            <label for="image-{{ machine.machineNo }}">
+              <mat-icon>photo_camera</mat-icon> Upload Image
+            </label>
+            <input
+              type="file"
+              capture="environment"
+              accept="image/*"
+              id="image-{{ machine.machineNo }}"
+              hidden
+              (change)="onImageCapture($event, machine)"
+            />
+          </div>
+  
+          <button
+            mat-flat-button
+            color="primary"
+            class="rectangle-button"
+            [disabled]="!machine.formGroup.valid || !machine.image"
+            (click)="submitReading(machine)"
+          >
+            Submit
+          </button>
+        </form>
+      </mat-card>
+    </div>
+
+    <mat-card class="testing-card">
+        <mat-card-header>
+          <mat-card-title class="testing-heading">Testing</mat-card-title>
+        </mat-card-header>
+      
+        <mat-card-content>
+          <form [formGroup]="testingForm">
+            <!-- Liters Consumption Input -->
+            <mat-form-field appearance="outline" class="input-field">
+              <mat-label>Liters Consumption</mat-label>
+              <input matInput type="number" formControlName="litersConsumption" required />
+            </mat-form-field>
+      
+            <!-- Dropdown for Machine Selection -->
+            <mat-form-field appearance="outline" class="input-field">
+              <mat-label>Machine</mat-label>
+              <mat-select formControlName="selectedMachine" required>
+                <mat-option value="ALL">ALL</mat-option>
+                <mat-option value="Machine 1">Machine 1</mat-option>
+                <mat-option value="Machine 2">Machine 2</mat-option>
+                <mat-option value="Machine 3">Machine 3</mat-option>
+                <!-- Add more machines here as needed -->
+              </mat-select>
+            </mat-form-field>
+      
+            <!-- Update Button -->
+            <button mat-flat-button color="primary" class="rectangle-button" [disabled]="!testingForm.valid" (click)="updateTesting()">
+              Update
+            </button>
+          </form>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="testing-card">
+        <mat-card-header>
+          <mat-card-title class="testing-heading">Testing By An Issue</mat-card-title>
+        </mat-card-header>
+      
+        <mat-card-content>
+          <form [formGroup]="testingIssueForm">
+            <!-- Liters Consumption Input -->
+            <mat-form-field appearance="outline" class="input-field">
+              <mat-label>Liters Consumption</mat-label>
+              <input matInput type="number" formControlName="litersConsumption" required />
+            </mat-form-field>
+      
+            <!-- Dropdown for Machine Selection -->
+            <mat-form-field appearance="outline" class="input-field">
+              <mat-label>Machine</mat-label>
+              <mat-select formControlName="selectedMachine" required>
+                <mat-option value="ALL">ALL</mat-option>
+                <mat-option value="Machine 1">Machine 1</mat-option>
+                <mat-option value="Machine 2">Machine 2</mat-option>
+                <mat-option value="Machine 3">Machine 3</mat-option>
+                <!-- Add more machines here as needed -->
+              </mat-select>
+            </mat-form-field>
+      
+            <!-- Update Button -->
+            <button mat-flat-button color="primary" class="rectangle-button" [disabled]="!testingIssueForm.valid" (click)="updateTestingIssue()">
+              Update
+            </button>
+          </form>
+        </mat-card-content>
+    </mat-card>
+
+    <!-- Pump Expenses Card -->
+<mat-card class="expenses-card">
+    <mat-card-header>
+      <mat-card-title class="testing-heading">Pump Expenses</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="pumpExpensesForm">
+        <mat-form-field appearance="outline" class="input-field">
+          <mat-label>Expense Type</mat-label>
+          <input matInput formControlName="expenseType" required />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="input-field">
+          <mat-label>Amount</mat-label>
+          <input matInput formControlName="amount" type="number" required />
+        </mat-form-field>
+  
+        <button
+          mat-flat-button
+          color="primary"
+          class="rectangle-button"
+          [disabled]="!pumpExpensesForm.valid"
+          (click)="submitPumpExpenses()"
+        >
+          Submit Pump Expenses
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  
+  <!-- Personal Expenses Card -->
+  <mat-card class="expenses-card">
+    <mat-card-header>
+      <mat-card-title class="testing-heading">Personal Expenses</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="personalExpensesForm">
+        <mat-form-field appearance="outline" class="input-field">
+          <mat-label>Expense Type</mat-label>
+          <input matInput formControlName="expenseType" required />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="input-field">
+          <mat-label>Amount</mat-label>
+          <input matInput formControlName="amount" type="number" required />
+        </mat-form-field>
+  
+        <button
+          mat-flat-button
+          color="primary"
+          class="rectangle-button"
+          [disabled]="!personalExpensesForm.valid"
+          (click)="submitPersonalExpenses()"
+        >
+          Submit Personal Expenses
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  
+  <!-- Creditors Card -->
+  <mat-card class="expenses-card">
+    <mat-card-header>
+      <mat-card-title class="testing-heading">Creditors</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="creditorsForm">
+        <mat-form-field appearance="outline" class="input-field">
+          <mat-label>Creditor Name</mat-label>
+          <input matInput formControlName="creditorName" required />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="input-field">
+          <mat-label>Amount </mat-label>
+          <input matInput formControlName="amountDue" type="number" required />
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline" class="input-field">
+          <mat-label>Select Creditor Type</mat-label>
+          <mat-select formControlName="creditorType" required>
+            <mat-option value="Lender">Lender</mat-option>
+            <mat-option value="Vendor">Vendor</mat-option>
+            <mat-option value="Others">Others</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <button
+          mat-flat-button
+          color="primary"
+          class="rectangle-button"
+          [disabled]="!creditorsForm.valid"
+          (click)="submitCreditors()"
+        >
+          Submit Creditor Details
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="collections-card">
+    <mat-card-header>
+      <mat-card-title class="testing-heading">Money Collections</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="moneyCollectionForm">
+        <!-- PhonePe Amount and Upload -->
+        <mat-label>PhonePe Collection</mat-label>
+        <div class="upload-section">
+          <mat-form-field appearance="outline" class="input-field">
+            <mat-label>Amount</mat-label>
+            <input matInput formControlName="phonepeAmount" type="number" required />
+          </mat-form-field>
+  
+          <div class="upload-camera">
+            <label for="phonepeImage">
+              <mat-icon>photo_camera</mat-icon> 
+            </label>
+            <input
+              type="file"
+              id="phonepeImage"
+              capture="environment"
+              accept="image/*"
+              hidden
+              (change)="onImageCapture2($event, 'phonepe')"
+            />
+          </div>
+        </div>
+  
+        <!-- Card Swipe Amount and Upload -->
+        <mat-label>Card Swipe Collection</mat-label>
+        <div class="upload-section">
+          <mat-form-field appearance="outline" class="input-field">
+            <mat-label>Amount</mat-label>
+            <input matInput formControlName="cardAmount" type="number" required />
+          </mat-form-field>
+  
+          <div class="upload-camera">
+            <label for="cardImage">
+              <mat-icon>photo_camera</mat-icon>
+            </label>
+            <input
+              type="file"
+              id="cardImage"
+              capture="environment"
+              accept="image/*"
+              hidden
+              (change)="onImageCapture2($event, 'card')"
+            />
+          </div>
+        </div>
+  
+        <!-- Coins and Notes Table -->
+        <div class="money-table">
+            <h4>Coins</h4>
+            <div class="money-row" *ngFor="let coin of coinDenominations">
+              <label class="denomination-label">{{ coin }} ₹ :</label>
+              <mat-form-field appearance="outline" class="denomination-input">
+                <input
+                  matInput
+                  type="number"
+                  min="0"
+                  [formControlName]="'coin_' + coin"
+                  placeholder="Count"
+                />
+              </mat-form-field>
+            </div>
+          
+            <h4>Notes</h4>
+            <div class="money-row" *ngFor="let note of noteDenominations">
+              <label class="denomination-label">{{ note }} ₹ :</label>
+              <mat-form-field appearance="outline" class="denomination-input">
+                <input
+                  matInput
+                  type="number"
+                  min="0"
+                  [formControlName]="'note_' + note"
+                  placeholder="Count"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          
+          
+  
+        <button
+          mat-flat-button
+          color="primary"
+          class="rectangle-button"
+          [disabled]="!moneyCollectionForm.valid"
+          (click)="submitMoneyCollection()"
+        >
+          Submit Collection
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  
+</mat-card>
+  
+  

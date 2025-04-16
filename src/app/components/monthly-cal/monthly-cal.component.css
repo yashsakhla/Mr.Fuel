@@ -1,0 +1,225 @@
+/* Shared card styling */
+.dashboard-card {
+    padding: 16px 20px;
+    border-radius: 16px;
+    background: linear-gradient(to right, #f8f9fa, #edf2f7);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    font-family: "Segoe UI", Roboto, sans-serif;
+    margin-bottom: 24px;
+  }
+  
+  /* Section title with icon */
+  .dashboard-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #1e293b;
+    margin-bottom: 30px;
+  }
+  
+  h5 {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  
+  mat-icon {
+    color: #1976d2;
+    font-size: 20px;
+  }
+  
+  /* Main dashboard cards */
+  .main-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .main-card {
+    flex: 1 1 45%;
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 12px;
+    border-left: 4px solid #1976d2;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .main-card-heading {
+    font-size: 13px;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 6px;
+  }
+  
+  .main-card-content .money-text {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+  }
+  
+  /* Machine money section */
+  .machine-money-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  
+  .machine-money-card, .testing-card {
+    flex: 1 1 24px;
+    background: linear-gradient(to top left, #f0f4f8, #ffffff);
+    padding: 12px 16px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  }
+  
+  .machine-details p {
+    font-size: 13px;
+    color: #444;
+    margin: 2px 0;
+  }
+  
+  .machine-money h3,
+  .testing-money h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #006bb3;
+    margin-top: 8px;
+  }
+  
+  .overall-heading{
+    font-size: 1.3rem;
+    padding-top: 1rem;
+  }
+  
+  /* Table cleanup */
+  mat-header-cell, mat-cell {
+    padding: 8px 8px; /* Remove excessive left-right space */
+    font-size: 13px;
+    color: #333;
+  }
+  
+  mat-header-cell {
+    font-weight: 600;
+    background: #f4f6f8;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  mat-row:hover {
+    background-color: #fafafa;
+  }
+  
+  /* Transaction cards (PhonePe, Card Swipe, etc.) */
+  .transaction-section {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  
+  .transaction-card {
+    flex: 1 1 200px;
+    background: #e3f2fd;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border-left: 4px solid #1e88e5;
+  }
+  
+  .transaction-card h4 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+  }
+  
+  .transaction-card p {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e1e1e;
+    margin: 0;
+  }
+  
+  /* Section title */
+  .section-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 20px 0 12px;
+    color: #2e3a59;
+  }
+  
+  .card-bottom-label {
+    position: absolute;
+    bottom: 10px;
+    left: 16px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Cards should allow absolutely positioned child */
+  .main-card, .machine-money-card, .testing-card, .transaction-card {
+    position: relative;
+    padding-bottom: 36px !important;
+    font-size: 13px;
+  }
+  
+  /* Aligning money text bigger, others smaller */
+  .money-text {
+    font-size: 22px;
+    font-weight: bold;
+    color: #222;
+  }
+  
+  /* Clean headings */
+  .main-card-heading,
+  h4, h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+  }
+  
+  /* Card content spacing */
+  .main-card-content {
+    margin-top: 4px;
+  }
+  
+  /* Remove bottom space in mat-card */
+  mat-card {
+    margin-bottom: 12px !important;
+  }
+  
+  /* Table spacing fixes */
+  .expenses-table .mat-cell,
+  .expenses-table .mat-header-cell {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    font-size: 13px;
+  }
+
+  button{
+    background-color: #3264d5 !important;
+    color: #fff !important;
+    margin-bottom: 1rem;
+    z-index: 0 !important;
+  }
+  
+  /* Responsive behavior */
+  @media screen and (max-width: 768px) {
+    .main-card-container,
+    .machine-money-container,
+    .transaction-section {
+      flex-direction: column;
+    }
+  
+    .main-card,
+    .machine-money-card,
+    .transaction-card {
+      flex: 1 1 100%;
+    }
+  }
+  

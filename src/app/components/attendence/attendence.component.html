@@ -1,0 +1,60 @@
+<mat-card class="attendance-card">
+    <div class="heading">
+        <mat-icon>calculate</mat-icon>
+        <h3>Staff Attendance</h3>
+      </div>
+  
+    <mat-form-field appearance="outline" class="date-picker">
+      <mat-label>Select Date</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        [(ngModel)]="selectedDate"
+        [max]="maxDate"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    
+    <div class="responsive-table-container">
+        <mat-table [dataSource]="staffList" class="mat-elevation-z2">
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+              <mat-cell *matCellDef="let staff"> {{ staff.name }} </mat-cell>
+            </ng-container>
+        
+            <ng-container matColumnDef="attendance">
+              <mat-header-cell *matHeaderCellDef> Attendance </mat-header-cell>
+              <mat-cell *matCellDef="let staff">
+                <mat-checkbox
+                  [(ngModel)]="staff.attendance.present"
+                  (change)="selectOnlyOne(staff, 'present')"
+                >
+                  Present
+                </mat-checkbox>
+                <mat-checkbox
+                  [(ngModel)]="staff.attendance.half"
+                  (change)="selectOnlyOne(staff, 'half')"
+                >
+                  Half Day
+                </mat-checkbox>
+                <mat-checkbox
+                  [(ngModel)]="staff.attendance.absent"
+                  (change)="selectOnlyOne(staff, 'absent')"
+                >
+                  Absent
+                </mat-checkbox>
+              </mat-cell>
+            </ng-container>
+        
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+          </mat-table>
+    </div>
+   
+  
+    <button mat-raised-button class="submit-button" (click)="submitAttendance()">
+      Submit Attendance
+    </button>
+  </mat-card>
+  

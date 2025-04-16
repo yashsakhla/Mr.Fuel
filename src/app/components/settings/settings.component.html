@@ -1,0 +1,47 @@
+<div class="fuel-container">
+    <mat-card class="fuel-card petrol-card">
+      <mat-card-header>
+        <mat-icon class="fuel-icon">local_gas_station</mat-icon>
+        <mat-card-title>Petrol Price</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput type="number" step="0.01" [(ngModel)]="fuels[0].value" (ngModelChange)="checkChanges(fuels[0])" />
+        </mat-form-field>
+        <button mat-raised-button color="accent" [disabled]="!fuels[0].changed" (click)="updateFuelValue(fuels[0])">
+          Update Petrol
+        </button>
+      </mat-card-content>
+    </mat-card>
+  
+    <mat-card class="fuel-card diesel-card">
+      <mat-card-header>
+        <mat-icon class="fuel-icon">local_gas_station</mat-icon>
+        <mat-card-title>Diesel Price</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput type="number" step="0.01" [(ngModel)]="fuels[1].value" (ngModelChange)="checkChanges(fuels[1])" />
+        </mat-form-field>
+        <button mat-raised-button color="accent" [disabled]="!fuels[1].changed" (click)="updateFuelValue(fuels[1])">
+          Update Diesel
+        </button>
+      </mat-card-content>
+    </mat-card>
+  
+    <mat-card class="fuel-card power-card">
+      <mat-card-header>
+        <mat-icon class="fuel-icon">local_gas_station</mat-icon>
+        <mat-card-title>Power Price</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-form-field appearance="outline" class="full-width">
+          <input matInput type="number" step="0.01" [(ngModel)]="fuels[2].value" (ngModelChange)="checkChanges(fuels[2])" />
+        </mat-form-field>
+        <button mat-raised-button color="accent" [disabled]="!fuels[2].changed" (click)="updateFuelValue(fuels[2])">
+          Update Power
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

@@ -1,0 +1,63 @@
+.attendance-card {
+    max-width: 900px;
+    padding: 20px;
+    background-color: #f4f6f8 !important;
+  }
+
+  .heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #1e293b;
+    margin-bottom: 30px;
+  }
+
+  .heading mat-icon {
+    color: #1976d2;
+  }
+  
+  h3 {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  .date-picker {
+    width: 300px;
+    margin-bottom: 20px;
+    display: block;
+  }
+  
+  mat-table {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  mat-checkbox {
+    display: block;
+    margin-bottom: 4px;
+  }
+  
+  .submit-button {
+    width: 100%;
+    background-color: #3264d5;
+    color: white;
+    font-weight: 600;
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .responsive-table-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  mat-table {
+    min-width: 600px; /* or adjust as needed based on your columns */
+  }
+
+  button{
+    z-index: 0;
+  }
+  
+  

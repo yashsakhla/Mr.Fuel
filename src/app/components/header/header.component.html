@@ -1,0 +1,69 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+  #sidenav
+  class="sidenav"
+  [mode]="'over'"
+  [opened]="sidenavOpen"
+  *ngIf="isAdmin"
+  [class.full]="sidenavOpen"
+>
+  <div class="sideNav-header">
+    <span style="flex: 1">MR.Fuel</span>
+  <button *ngIf="isAdmin" mat-icon-button (click)="toggleSidenav()">
+    <mat-icon>close</mat-icon>
+  </button>
+  </div>
+
+  <hr/>
+
+  <mat-nav-list>
+    <mat-list-item [routerLink]="'/dashboard'" routerLinkActive="active-link" (click)="closeSidenav()">
+      <mat-icon>home</mat-icon> &nbsp; <span>24 * 7 Dashboard</span>
+    </mat-list-item>
+
+    <mat-list-item [routerLink]="'/monthly'" routerLinkActive="active-link" (click)="closeSidenav()">
+      <mat-icon>home</mat-icon> &nbsp; <span>Monthly Dashboard</span>
+    </mat-list-item>
+
+    <mat-list-item [routerLink]="'/settings'" routerLinkActive="active-link" (click)="closeSidenav()">
+      <mat-icon>settings</mat-icon> &nbsp; <span>Settings</span>
+    </mat-list-item>
+
+    <mat-list-item [routerLink]="'/manager'" routerLinkActive="active-link" (click)="closeSidenav()">
+      <mat-icon>supervisor_account</mat-icon> &nbsp; <span>Manager</span>
+    </mat-list-item>
+
+    <mat-list-item [routerLink]="'/staff'" routerLinkActive="active-link" (click)="closeSidenav()">
+      <mat-icon>group</mat-icon> &nbsp; <span>Staff</span>
+    </mat-list-item>
+
+    <mat-list-item [routerLink]="'/machines'" routerLinkActive="active-link" (click)="closeSidenav()">
+      <mat-icon>precision_manufacturing</mat-icon> &nbsp; <span>Machines</span>
+    </mat-list-item>
+
+    <mat-list-item [routerLink]="'/dsr-reading'" routerLinkActive="active-link" (click)="closeSidenav()">
+      <mat-icon>fact_check</mat-icon> &nbsp; <span>DSR Reading</span>
+    </mat-list-item>
+
+    <mat-list-item [routerLink]="'/calculations'" routerLinkActive="active-link" (click)="closeSidenav()">
+      <mat-icon>calculate</mat-icon> &nbsp; <span>24x7 Calculations</span>
+    </mat-list-item>
+
+    <mat-list-item [routerLink]="'/staff-attendance'" routerLinkActive="active-link" (click)="closeSidenav()">
+      <mat-icon>calendar_today</mat-icon> &nbsp; <span>Staff Attendance</span>
+    </mat-list-item>
+  </mat-nav-list>
+</mat-sidenav>
+
+
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button *ngIf="isAdmin" mat-icon-button (click)="toggleSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span style="flex: 1">MR.Fuel</span>
+      <button mat-button (click)="logout()"><mat-icon>logout</mat-icon>Logout</button>
+    </mat-toolbar>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,65 @@
+.glass-card {
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+  }
+  
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  
+    h2 {
+      font-size: 22px;
+      font-weight: 600;
+      margin: 0;
+      color: #263238;
+    }
+  
+    .section-icon {
+      font-size: 28px;
+      color: #2196f3;
+    }
+  
+    .divider {
+      flex-grow: 1;
+      height: 1px;
+      background: #ccc;
+      margin-left: 8px;
+    }
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    align-items: end;
+  }
+  
+  .btn-wrapper {
+    width: 100%;
+    margin-top: 10px;
+    z-index: 0;
+  }
+  
+  .gradient-button {
+    background: linear-gradient(to right, #42a5f5, #7e57c2);
+    color: white;
+    font-weight: 500;
+    border-radius: 6px;
+    padding: 10px 24px;
+  }
+  
+  .table-wrapper {
+    overflow-x: auto;
+    margin-top: 16px;
+  }
+  
+  .styled-table {
+    width: 100%;
+    min-width: 600px;
+  }
+  

@@ -1,0 +1,127 @@
+.login-container {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  h1{
+    line-height: 2.5rem;
+  }
+  
+  /* Background image */
+  .login-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('/assets/images/fuel-bg.jpg') no-repeat center center/cover;
+    z-index: 0;
+  }
+  
+  /* Overlay for dark effect */
+  .login-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* darker for contrast */
+    z-index: 1;
+  }
+  
+  .welcome-text {
+    position: absolute;
+    z-index: 2;
+    top: 25%;
+    left: 60px;
+    color: #fefefe;
+    font-family: 'Roboto Slab', serif;
+    animation: slideInLeft 1.2s ease-out;
+    max-width: 40%;
+  }
+  
+  .welcome-text h1 {
+    font-size: 40px;
+    margin: 0;
+    color: #ffc107;
+  }
+  
+  .welcome-text p {
+    font-size: 18px;
+    color: #eee;
+    margin-top: 10px;
+  }
+  
+  .animated {
+    animation: fadeIn 2s ease-in-out infinite alternate;
+  }
+  
+  .login-card {
+    position: absolute;
+    z-index: 2;
+    bottom: 40px;
+    right: 40px;
+    width: 360px;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+  }
+  
+  .full-width {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  
+  /* Animations */
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0.6;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .welcome-text {
+      position: static;
+      max-width: 100%;
+      text-align: center;
+      padding: 30px 20px 10px;
+    }
+  
+    .welcome-text h1 {
+      font-size: 32px;
+    }
+  
+    .welcome-text p {
+      font-size: 16px;
+    }
+  
+    .login-card {
+      position: static;
+      width: 90%;
+      margin: 0 auto 40px;
+    }
+  
+    .login-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-top: 20px;
+    }
+  }
+  

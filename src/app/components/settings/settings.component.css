@@ -1,0 +1,66 @@
+.fuel-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    padding: 24px;
+  }
+  
+  .fuel-card {
+    width: 300px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: #333;
+    background: #f9f9f9; /* fallback */
+  }
+  
+  .fuel-card mat-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 0;
+  }
+  
+  .fuel-card .fuel-icon {
+    font-size: 28px;
+    color: #555;
+  }
+  
+  .fuel-card mat-card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #222;
+  }
+  
+  .fuel-card mat-card-content {
+    padding-top: 1rem;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  button {
+    margin-top: 10px;
+    width: 100%;
+    font-weight: 600;
+  }
+  
+  /* Light professional backgrounds for each card */
+  .petrol-card {
+    background: linear-gradient(135deg, #e0f7fa, #b2ebf2); /* light cyan */
+  }
+  
+  .diesel-card {
+    background: linear-gradient(135deg, #fce4ec, #f8bbd0); /* soft pink */
+  }
+  
+  .power-card {
+    background: linear-gradient(135deg, #ede7f6, #d1c4e9); /* soft lavender */
+  }
+  
+  /* Optional: style for disabled button to match */
+  button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }

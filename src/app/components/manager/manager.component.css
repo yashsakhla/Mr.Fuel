@@ -1,0 +1,113 @@
+.manager-container {
+    background: linear-gradient(to bottom right, #f0f4f8, #ffffff);
+    min-height: 100vh;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .glass-card {
+    background: #ffffffcc;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  
+    h2 {
+      font-size: 22px;
+      font-weight: 600;
+      margin: 0;
+      color: #263238;
+    }
+  
+    .section-icon {
+      font-size: 28px;
+      color: #2196f3;
+    }
+  
+    .divider {
+      flex-grow: 1;
+      height: 1px;
+      background: #ccc;
+      margin-left: 8px;
+    }
+  }
+  
+  .form-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  
+  mat-form-field {
+    flex: 1 1 45%;
+  }
+  
+  .btn-wrapper {
+    width: 100%;
+    margin-top: 10px;
+    z-index: 0;
+  }
+  
+  .gradient-button {
+    background: linear-gradient(to right, #42a5f5, #7e57c2);
+    color: white;
+    font-weight: 500;
+    border-radius: 6px;
+    padding: 10px 24px;
+  }
+  
+  .manager-table {
+    width: 100%;
+    margin-top: 16px;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 8px;
+    justify-content: start;
+  }
+  
+  @media (max-width: 768px) {
+    mat-form-field {
+      width: 100%;
+    }
+  
+    .form-layout {
+      flex-direction: column;
+    }
+  
+    .actions {
+      justify-content: center;
+    }
+  }
+  .table-wrapper {
+    overflow-x: auto;
+    max-width: 100%;
+    padding-top: 10px;
+  }
+  
+  .manager-table {
+    width: 100%;
+    min-width: 600px;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  
+  td span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
